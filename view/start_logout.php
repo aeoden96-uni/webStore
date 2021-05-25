@@ -1,0 +1,1 @@
+<p>See you later <?php echo $userName; ?>. Redirecting...</p>
