@@ -21,8 +21,8 @@ class StartController
 		}
 	}
 
-	public function index() {
-
+	public function index() 
+	{
 
 		session_start();
 
@@ -49,8 +49,6 @@ class StartController
 	}
 
 	public function signup($err=NULL){
-		
-
 	    if ( $err != NULL){
 	        echo $err;
         }
@@ -155,8 +153,6 @@ class StartController
 
 		$us= new UserService();
 
-		
-
 		if($us->checkUserLogin()){
 			header("Refresh:2; url=index.php?rt=main");
 			$succesVar="successful. :)";
@@ -177,6 +173,9 @@ class StartController
 		session_start();
 		$title = '';
 
+		//$us= new UserService();
+
+		//$us->loadInput($user,$pass);
 
 		$_SESSION["account_type"] = "guest"; 
 
@@ -191,87 +190,31 @@ class StartController
 
 	public function logout() {
 		session_start();
+		
+
+		$us= new UserService();
+
+
+		if( isset( $_SESSION["account_type"] )) 
+		{
+			if ($_SESSION["account_type"] == "user"){
+				header("Refresh:1; url=index.php?rt=start");
+			}
+			
+		}
+		else{
+			;
+		}
+
         session_unset();
 		session_destroy();
 
+		
 		header("Refresh:1; url=index.php?rt=start");
 
-		require_once __DIR__ . '/../view/start_logout.php';
-		require_once __DIR__ . '/../view/_footer.php';
+		//require_once __DIR__ . '/../view/start_logout.php';
+		//require_once __DIR__ . '/../view/_footer.php';
 		
-	}
-
-/******************************************************************** */
-
-
-
-	public function loginCheckFaks(){
-		session_start();
-
-		//$check=$us->checkUserLogin();
-		$check=true;
-
-
-		if($check){
-			header("Refresh:2; url=index.php?rt=faks");
-			$succesVar="successful. :)";
-            $_SESSION["account_type"] = "ucenik";
-		}
-		else{
-			$succesVar="unsuccessful. :(";
-			session_destroy();
-			header("Refresh:2; url=index.php?rt=start");
-		}
-
-		require_once __DIR__ . '/../view/start_login.php';
-	}
-
-	public function loginCheckAdmin(){
-		session_start();
-
-		//$check=$us->checkUserLogin();
-		$check=true;
-
-
-		if($check){
-			header("Refresh:2; url=index.php?rt=admin");
-			$succesVar="successful. :)";
-            $_SESSION["account_type"] = "ucenik";
-		}
-		else{
-			$succesVar="unsuccessful. :(";
-			session_destroy();
-			header("Refresh:2; url=index.php?rt=start");
-		}
-
-		require_once __DIR__ . '/../view/start_login.php';
-	}
-
-	public function loginCheckUcenik(){
-		/**
-		 * KREIRA TEMP STRANICU login successfull ako SET=true
-		 * REDIRECT NA ucenik DASHBOARD
-		 * 
-		 * REDIRECT NA registerUcenik ako SET=true
-		 */
-		session_start();
-
-		//$check=$us->checkUserLogin();
-		$check=true;
-
-
-		if($check){
-			header("Refresh:2; url=index.php?rt=ucenik");
-			$succesVar="successful. :)";
-            $_SESSION["account_type"] = "ucenik";
-		}
-		else{
-			$succesVar="unsuccessful. :(";
-			session_destroy();
-			header("Refresh:2; url=index.php?rt=start");
-		}
-
-		require_once __DIR__ . '/../view/start_login.php';
 	}
 	
 

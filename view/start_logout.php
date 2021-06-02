@@ -1,1 +1,1 @@
-<p>See you later. Redirecting...</p>
+<p>See you later <?php echo $userName; ?>. Redirecting...</p>
