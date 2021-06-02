@@ -1,173 +1,162 @@
-<?php 
-require_once __DIR__ . '/_header.php'; 
-?>
-<style>
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
+<!DOCTYPE html>
+<html>
+<head>
 
-* {
-  box-sizing: border-box;
-}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
-/* style the container */
-.container {
-  position: relative;
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px 0 30px 0;
-} 
-
-/* style inputs and link buttons */
-input,
-.btn {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 4px;
-  margin: 5px 0;
-  opacity: 0.85;
-  display: inline-block;
-  font-size: 17px;
-  line-height: 20px;
-  text-decoration: none; /* remove underline from anchors */
-}
-
-input:hover,
-.btn:hover {
-  opacity: 1;
-}
-
-/* add appropriate colors to fb, twitter and google buttons */
-.fb {
-  background-color: #3B5998;
-  color: white;
-}
-
-.twitter {
-  background-color: #55ACEE;
-  color: white;
-}
-
-.google {
-  background-color: #dd4b39;
-  color: white;
-}
-
-/* style the submit button */
-input[type=submit] {
-  background-color: #04AA6D;
-  color: white;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-/* Two-column layout */
-.col {
-  float: center;
-  width: 50%;
-  margin: auto;
-  padding: 0 50px;
-  margin-top: 6px;
-  text-align: center;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* vertical line */
-.vl {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  border: 2px solid #ddd;
-  height: 175px;
-}
-
-/* text inside the vertical line */
-.vl-innertext {
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #f1f1f1;
-  border: 1px solid #ccc;
-  border-radius: 50%;
-  padding: 8px 10px;
-}
-
-/* hide some text on medium and large screens */
-.hide-md-lg {
-  display: none;
-}
-
-/* bottom container */
-.bottom-container {
-  text-align: center;
-  background-color: #666;
-  border-radius: 0px 0px 4px 4px;
-}
-
-/* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 650px) {
-  .col {
-    width: 100%;
-    margin-top: 0;
-  }
-  /* hide the vertical line */
-  .vl {
-    display: none;
-  }
-  /* show the hidden text on small screens */
-  .hide-md-lg {
-    display: block;
-    text-align: center;
-  }
-}
-</style>
-
+	<!------ Include the above in your HEAD tag ---------->
+</head>
 <body>
+<script>
+
+function yesno(thecheckbox, thelabel,checkbox_conditions) {
+
+	console.log(thecheckbox);
+	console.log(thelabel);
+	
+    
+    var checkboxvar = document.getElementById(thecheckbox);
+    var labelvar = document.getElementById(thelabel);
+	var condvar = document.getElementById(checkbox_conditions);
+	
+    if (!checkboxvar.checked) {
+        labelvar.innerHTML = "Već imam račun";
+		condvar.style.display = "none";
+		document.getElementById("korisnik_uvjeti_label").innerHTML = "";
+
+		
+    }
+    else {
+        labelvar.innerHTML = "Nemam račun, izradi ga sad";
+		document.getElementById("korisnik_uvjeti_label").innerHTML = " Prihvaćam uvjete i politiku privatnosti";
+		condvar.style.display = "block";
+		
+		
+    }
+}
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
 
 <div class="container">
-  <form action="index.php?rt=start/login"  method="post">
-    <div class="row">
-      <h2 style="text-align:center">Login to the store</h2>
-      
-      
+	<br>  <p class="text-center">Postani student</p>
+	<hr>
 
-      <div class="col">
-        <div class="hide-md-lg">
-          <p>Or sign in manually:</p>
-        </div>
+	<div class="row">
+	<aside class="col-sm-4">
+	<p>Login za učenike</p>
 
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <input type="submit" value="Login">
-		<a href="index.php?rt=start/guestLogin" class="fb btn">
-          <i class="fa fa-facebook fa-fw"></i> Login as guest
-         </a>
-      </div>
-      
-    </div>
-  </form>
-</div>
+	<div class="card">
+	<article class="card-body">
+		<!--<a href="" class="float-right btn btn-outline-primary">Sign up</a>-->
+		<h4 class="card-title mb-4 mt-1">Učenik</h4>
 
-<div class="bottom-container">
-  <div class="row">
-    <div class="col">
-      <a href="index.php?rt=start/signup" style="color:white" class="btn">Sign up</a>
-    </div>
-    <div class="col">
-      <a href="#" style="color:white" class="btn">Forgot password?</a>
-    </div>
-  </div>
-</div>
+		<hr>
+		<form action="index.php?rt=start/loginCheckUcenik" method="post">
+			<div class="form-check form-switch">
+			  <input onclick="yesno('korisnik_checkbox','korisnik_checkbox_label','korisnik_uvjeti');" class="form-check-input" type="checkbox" name="korisnik_checkbox"  id="korisnik_checkbox">
+			  <label name="korisnik_checkbox_label" style="margin-bottom:10px;" class="form-check-label" id="korisnik_checkbox_label" for="korisnik_checkbox">Već imam račun</label>
+			</div>
+			<div class="form-group">
+				<input style="margin-bottom:10px;" name="" class="form-control" placeholder="OIB" type="email">
+				
+				<input style="margin-bottom:10px;" class="form-control" placeholder="******" type="password">
+				<input type="checkbox" id="korisnik_uvjeti">
+				<label name="korisnik_checkbox_label" style="margin-bottom:10px;" class="form-check-label" id="korisnik_uvjeti_label" for="korisnik_checkbox"> Prihvaćam uvjete i politiku privatnosti</label>
+				<br>
+				<button type="submit" class="btn btn-primary btn-block"> Prijava  </button>
+				<div class="col-md-6 text-right">
+					<a class="small" href="#">Forgot password?</a>
+				</div>  
+				
+			</div> <!-- form-group// -->  
+					
+			                                                            
+		</form>
+	</article>
+	</div> <!-- card.// -->
 
+	</aside> <!-- col.// -->
+	<aside class="col-sm-4">
+	<p>Login za fakultete</p>
 
+	<div class="card">
+	<article class="card-body">
+		<!--<a href="" class="float-right btn btn-outline-primary">Sign up</a>-->
+		<h4 class="card-title mb-4 mt-1">Fakultet</h4>
+
+		<hr>
+		<form action="index.php?rt=start/loginCheckFaks" method="post">
+			<div class="form-check form-switch">
+			  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+			  <label style="margin-bottom:10px;" class="form-check-label" for="flexSwitchCheckDefault">Još nemam račun</label>
+			</div>
+			<div class="form-group">
+				<input style="margin-bottom:10px;" name="" class="form-control" placeholder="OIB" type="email">
+				
+				<input style="margin-bottom:10px;" class="form-control" placeholder="******" type="password">
+				
+				<button type="submit" class="btn btn-primary btn-block"> Prijava  </button>
+				<div class="col-md-6 text-right">
+					<a class="small" href="#">Forgot password?</a>
+				</div>                                    
+			</div> <!-- form-group// -->  
+					
+			                                                            
+		</form>
+	</article>
+	</div> <!-- card.// -->
+
+	</aside> <!-- col.// -->
+	<aside class="col-sm-4">
+	<p>Login za admine</p>
+
+	<div class="card">
+	<article class="card-body">
+		<!--<a href="" class="float-right btn btn-outline-primary">Sign up</a>-->
+		<h4 class="card-title mb-4 mt-1">Administrator</h4>
+
+		<hr>
+		<form action="index.php?rt=start/loginCheckAdmin" method="post">
+			<div class="form-check form-switch">
+			  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+			  <label style="margin-bottom:10px;" class="form-check-label" for="flexSwitchCheckDefault">Još nemam račun</label>
+			</div>
+			<div class="form-group">
+				<input style="margin-bottom:10px;" name="" class="form-control" placeholder="korisnicko ime" type="email">
+				
+				<input style="margin-bottom:10px;" class="form-control" placeholder="******" type="password">
+				
+				<button type="submit" class="btn btn-primary btn-block"> Prijava  </button>
+				<div class="col-md-6 text-right">
+					<a class="small" href="#">Forgot password?</a>
+				</div>                                    
+			</div> <!-- form-group// -->  
+					
+			                                                            
+		</form>
+	</article>
+	</div> <!-- card.// -->
+
+	</aside> <!-- col.// -->
+	</div> <!-- row.// -->
+
+</div> 
+<!--container end.//-->
+
+<br><br><br>
+<article class="bg-secondary mb-3">  
+	<div class="card-body text-center">
+		<h4 class="text-white">HTML UI KIT <br> Ready to use Bootstrap 4 components and templates </h4>
+		<p class="h5 text-white"> for Ecommerce, marketplace, booking websites 
+		and product landing pages</p>   <br>
+		<p><a class="btn btn-warning" target="_blank" href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com  
+		<i class="fa fa-window-restore "></i></a></p>
+	</div>
+	<br><br><br>
+</article>
+
+</body>
+</html>

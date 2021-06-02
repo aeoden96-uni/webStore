@@ -4,7 +4,7 @@ class User
 {
 	public $user_id, $name,$hashPass,$email ,$score, $creation_date, $description,$phone ,$points;
 
-	function __construct(  $user_id, $name,$email,$hashPass, $score, $creation_date, $description,$phone ,$points )
+    function __construct(  $user_id, $name,$email,$hashPass, $score, $creation_date, $description,$phone ,$points )
 	{
 		$this->user_id = $user_id;
 		$this->name = $name;

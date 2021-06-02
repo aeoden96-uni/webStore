@@ -1,5 +1,4 @@
 <?php 
-
 // Provjeri je li postavljena varijabla rt; kopiraj ju u $route
 if( isset( $_GET['rt'] ) )
 	$route = $_GET['rt'];
@@ -10,8 +9,11 @@ else
 $parts = explode( '/', $route );
 
 $controllerName = $parts[0] . 'Controller';
-if( isset( $parts[1] ) )
+
+
+if( isset( $parts[1] ) ){
 	$action = $parts[1];
+}
 else
 	$action = 'index';
 
@@ -28,13 +30,27 @@ if( !file_exists( $controllerFileName ) )
 require_once $controllerFileName;
 
 // Stvori pripadni kontroler
-$con = new $controllerName; 
+$con = new $controllerName;
 
-// Ako u njemu nema tražene akcije, stavi da se traži akcija index
-if( !method_exists( $con, $action ) )
-	$action = 'index';
 
-// Pozovi odgovarajuću akciju
-$con->$action();
+
+if (preg_match('/^[0-9]+$/', $action)) {
+	$ind = 'index';
+	$con->$ind((int)$action);
+}
+else{
+
+	// Ako u njemu nema tražene akcije, stavi da se traži akcija index
+	if( !method_exists( $con, $action ) ){
+		$action = 'index';
+
+	}
+	$con->$action();
+
+
+}
+
+
+
 
 ?>

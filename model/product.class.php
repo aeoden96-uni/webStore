@@ -2,9 +2,9 @@
 
 class Product
 {
-	public $product_id,$name,$description,$seller_id,$buy_date,$score,$price;
+	public $product_id,$name,$description,$seller_id,$sold,$score,$price;
 
-	function __construct($product_id,$seller_id,$name,$description,$price,$buy_date=NULL,$score=NULL)
+	function __construct($product_id,$seller_id,$name,$description,$price,$sold=NULL,$score=NULL)
 	{
 		
 
@@ -13,7 +13,7 @@ class Product
 		$this->name = $name;
 		$this->description = $description;
         $this->seller_id = $seller_id;
-        $this->buy_date = $buy_date;
+        $this->sold = $sold;
         $this->score = $score;
         $this->price = $price;
 

@@ -2,18 +2,15 @@
 
 class Transaction
 {
-	public $buyer_id,$seller_id ,$product_id, $buy_date, $price,$comment, $grade, $comment_creation_date;
+	public $id,$id_product ,$id_user, $rating, $comment;
 
-	function __construct(  $buyer_id,$seller_id ,$product_id, $buy_date, $price,$comment, $grade, $comment_creation_date)
+	function __construct( $id,$id_product ,$id_user, $rating, $comment)
 	{
-		$this->buyer_id = $buyer_id;
-		$this->seller_id = $seller_id;
-		$this->product_id = $product_id;
-		$this->buy_date = $buy_date;
-		$this->price = $price;
+		$this->id = $id;
+		$this->id_product = $id_product;
+		$this->id_user = $id_user;
+		$this->rating = $rating;
 		$this->comment = $comment;
-		$this->grade = $grade;
-		$this->comment_creation_date = $comment_creation_date;
 
 	}
 

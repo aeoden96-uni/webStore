@@ -19,11 +19,11 @@ require_once __DIR__ . '/_header.php';
 
 			echo '<tr>' .
 			     	'<td><b>' . $product->name . '</b></td>' .
-			     	'<td><a href="#">Visit seller ' .    $product->seller_id      . '</a></td>' .
+			     	'<td></td>' .
 				'</tr>'.
 				 '<tr>'.
 				 	 '<td>' . $product->price . '</td>' .
-					 '<td>' . 'settings link' . '</td>' .
+					 '<td></td>' .
 			     '</tr>'.
 				 '<tr>'.
 				 	'<td colspan="2">' . $product->description . '</td>' .	
